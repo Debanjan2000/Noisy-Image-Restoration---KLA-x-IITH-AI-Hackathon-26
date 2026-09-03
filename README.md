@@ -9,6 +9,8 @@
 
 This repository contains our award-winning solution for reconstructing high-quality images from degraded, noisy, and low-resolution `.npy` inputs. 
 
+![Noisy vs Ground Truth](visualisations/noisy_gt_comp.png)
+
 Real-world physical degradation is complex. We tackled the challenge of **compound corruptions**—simultaneously handling Speckle Noise, Additive White Gaussian Noise (AWGN), and Block Mean Downsampling.
 
 ## 🚀 Key Innovations
@@ -39,6 +41,8 @@ To squeeze maximum performance out of the model during evaluation:
 - **Local Validation (2% Held-Out):** PSNR: 28.5 dB | SSIM: 0.77
 - **Training Time:** ~75 minutes for a full 120-epoch run on 4× NVIDIA RTX A5000 GPUs.
 - **OOD Generalization:** The model successfully generalized to unseen, severe degradations in the private test set, proving the effectiveness of our curriculum learning and physically-motivated loss.
+
+![Denoised Samples](visualisations/contact_sheet_6_samples.png)
 
 ## 🧑‍💻 Team
 
