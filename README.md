@@ -1,6 +1,6 @@
 # Physically-Motivated Compound-Degradation Image Restoration 🏆
 
-> [**2nd Place Overall (Team Name: AUIG)**](https://drive.google.com/file/d/1J8r_s9TB1i0g8wlXXWLe6oYmtwyoM9_I/view?usp=sharing) at the KLA AI Hackathon, IIT Hyderabad '26
+> [**2nd Place Overall (Team Name: TAUIG)**](https://drive.google.com/file/d/1J8r_s9TB1i0g8wlXXWLe6oYmtwyoM9_I/view?usp=sharing) at the KLA AI Hackathon, IIT Hyderabad '26
 > - [**Public Leaderboard:**](https://drive.google.com/file/d/1ljUQov6SCQWBecOtH92l9pNomgWWjmEg/view?usp=sharing) Rank 13 (Score: 0.88614)
 > - [**Private Leaderboard:**](https://drive.google.com/file/d/1yg0PYCcsbPbGYoGU24Yfj9zb5nMNqvGM/view?usp=sharing) Rank 10 (Score: 0.88303)
 > - [**Final Rank (After Presentation):**](https://www.linkedin.com/feed/update/urn:li:activity:7462877666421923840/) Rank 2 🥈
