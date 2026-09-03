@@ -1,0 +1,53 @@
+# Physically-Motivated Compound-Degradation Image Restoration 🏆
+
+> **2nd Place Overall** at the KLA AI Hackathon, IIT Hyderabad '26
+> - **Public Leaderboard:** Rank 13 (Score: 0.88614)
+> - **Private Leaderboard:** Rank 10 (Score: 0.88303)
+> - **Final Rank (After Presentation):** Rank 2 🥈
+
+## 📖 Overview
+
+This repository contains our award-winning solution for reconstructing high-quality images from degraded, noisy, and low-resolution `.npy` inputs. 
+
+Real-world physical degradation is complex. We tackled the challenge of **compound corruptions**—simultaneously handling Speckle Noise, Additive White Gaussian Noise (AWGN), and Block Mean Downsampling.
+
+## 🚀 Key Innovations
+
+### 1. NAFNetH2SR Architecture
+We adapted the highly efficient **Nonlinear Activation Free Network (NAFNet)** for joint Super-Resolution ($2\times$) and compound denoising in grayscale.
+- Replaced standard nonlinear activations (ReLU, GELU) with **SimpleGate** (element-wise multiplication).
+- Achieved state-of-the-art restoration with drastically reduced MACs and computational complexity.
+
+### 2. Physically-Motivated Loss Landscape
+To prevent over-smoothing and enforce structural fidelity, we developed a dynamically weighted loss function:
+- **Reconstruction:** Official NAFNet PSNR Loss + Charbonnier Loss for outlier robustness.
+- **Perceptual \& Structural:** SSIM + LPIPS losses.
+- **Heteroscedastic Data Consistency (DC):** A novel heavy-tailed Student-t formulation to robustly handle outlier pixels without variance collapse.
+
+### 3. Curriculum-Based OOD Augmentation
+Our model climbed from Rank 13 to Rank 10 on the private leaderboard thanks to our generalization strategy:
+- **Phase 1:** Heavy synthetic OOD degradations (affine shifts, dynamic Gamma, 3x3 reflection blur, impulse noise, spatial cutouts) with early layers frozen.
+- **Phase 2 \& 3:** Linear decay of transforms and complete un-freezing for convergence on the pure dataset distribution.
+
+### 4. Inference Optimization
+To squeeze maximum performance out of the model during evaluation:
+- **Test-Time Augmentation (TTA):** Averaged predictions across 8-way spatial transformations (flips + rotations) to reduce variance.
+- **Test-Time Refinement:** Employed a local Adam optimizer at inference to perform gradient steps directly on the predicted HR output, minimizing the DC loss against the specific test LR image.
+
+## 📊 Results
+
+- **Local Validation (2% Held-Out):** PSNR: 28.5 dB | SSIM: 0.77
+- **Training Time:** ~75 minutes for a full 120-epoch run on 4× NVIDIA RTX A5000 GPUs.
+- **OOD Generalization:** The model successfully generalized to unseen, severe degradations in the private test set, proving the effectiveness of our curriculum learning and physically-motivated loss.
+
+## 🧑‍💻 Team
+
+**Department of Artificial Intelligence, Indian Institute of Technology, Hyderabad**
+- Supriyo Banerjea (AI24MTECH12005)
+- Debanjan Das (AI24MTECH12009)
+- Sumanta Manna (AI24MTECH12011)
+
+## 📚 References
+- Chen, L. et al., "Simple Baselines for Image Restoration (NAFNet)," ECCV, 2022.
+- Zamir, S. W. et al., "Restormer: Efficient Transformer for High-Resolution Image Restoration," CVPR, 2022.
+
